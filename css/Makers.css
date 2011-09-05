@@ -1,0 +1,54 @@
+.maker {
+	page-break-before: always;
+	height: 10in;
+	vertical-align: bottom;
+}
+
+.makerimg {
+    padding: 5px;
+    border: #0094cd 2px dashed;
+    height: 200px;
+}
+
+.container {
+	display: table;
+	padding-bottom:100px;
+}
+
+.row  {
+	display: table-row;
+}
+
+.left,.right,.middle {
+	display: table-cell;
+	padding: 25px;
+}
+
+.footer-container {
+	display: table;
+}
+
+.heading-graphic {
+    height: 150px;
+}
+
+
+.title {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    font-size: 48pt;
+    font-weight: 600;
+    color: #0094cd;
+    padding-top: 8pt;
+}
+
+.description {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    font-size: 18pt;
+}
+
+.url {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    font-size: 18pt;
+    color: #0094cd;
+    padding-top: 8pt;
+}
