@@ -5,3 +5,5 @@ key.php needs to define a variable called $spreadsheet_key that refers to the Go
 You'll also need http://fukuchi.org/works/qrencode/index.en.html installed since it uses the qrencode binary to generate QR Codes.
 
 If you want to use this, you probably need more stuff from Brian Jepson's collection of scripts that make the RI Mini Maker Faire tick.
+
+bjepson at gmail
