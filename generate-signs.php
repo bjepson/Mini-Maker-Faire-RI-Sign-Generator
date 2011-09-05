@@ -15,6 +15,9 @@
 	exit;
 	
   }
+  // add the compact=yes param to use small images
+  $compact = $_GET["compact"] == "yes";  
+
   // add the expire=yes param to clear the cache immediately
   $expire_now = $_GET["expire"] == "yes";  
 
@@ -116,8 +119,8 @@
 <div class="footer-container">
 	<div class="row">
 		<div class="middle"><img class="heading-graphic" src="<?php echo "figs/QR$value[18].png" ?>"/></div>
-		<div class="middle"><img class="heading-graphic" src="figs/RhodeIsland_MMF.jpg"/></div>
-		<div class="right"><img class="heading-graphic" src="figs/WF Square wTEXT.jpg"/></div>
+		<div class="middle"><img class="heading-graphic" src="figs/RhodeIsland_MMF<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
+		<div class="right"><img class="heading-graphic" src="figs/WF Square wTEXT<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
 	</div>
 </div>
 
