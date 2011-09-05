@@ -8,6 +8,12 @@
 
   include "key.php";
 
+  if (!$spreadsheet_key) {
+	fprintf(STDERR, "\$spreadsheet_key must be defined in key.php!\n");
+	exit;
+	
+  }
+
   // add the expire=yes param to clear the cache immediately
   $expire_now = $_GET["expire"] == "yes";  
 
