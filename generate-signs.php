@@ -6,6 +6,7 @@
 
 <?php
 
+  include "config.php";
   include "key.php";
 
   `mkdir -p csvcache`;
@@ -95,7 +96,7 @@
     }
 
 	if ($value[18]) { // Got a maker #
-        `qrencode -m 0 -s 7 -o figs/QR$value[18].png http://makerfaireri.com/home/makers/?project=$value[18]`;
+        `$qrencode -m 0 -s 7 -o figs/QR$value[18].png http://makerfaireri.com/home/makers/?project=$value[18]`;
 	}
 
 ?>
