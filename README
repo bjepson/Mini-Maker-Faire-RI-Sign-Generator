@@ -2,8 +2,6 @@ You'll need a Google Docs spreadsheet containing your makers for this to work.
 
 key.php needs to define a variable called $spreadsheet_key that refers to the Google Docs spreadsheet containing your data.
 
-You'll also need http://fukuchi.org/works/qrencode/index.en.html installed since it uses the qrencode binary to generate QR Codes.
-
 If you want to use this, you probably need more stuff from Brian Jepson's collection of scripts that make the RI Mini Maker Faire tick.
 
 bjepson at gmail

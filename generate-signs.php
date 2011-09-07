@@ -6,7 +6,6 @@
 
 <?php
 
-  include "config.php";
   include "key.php";
 
   `mkdir -p csvcache`;
@@ -95,8 +94,17 @@
       $sales = "<strong>For sale:</strong> $value[14]<br/>";
     }
 
+	$qr_url = "";
 	if ($value[18]) { // Got a maker #
-        `$qrencode -m 0 -s 7 -o figs/QR$value[18].png http://makerfaireri.com/home/makers/?project=$value[18]`;
+		$qr_url =
+			"http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=http%3A//makerfaireri.com/home/makers/%3Fproject%3D$value[18]";
+	}
+	
+	$maker_title = "";
+	if ( $value[1] == $value[4]) {
+		$maker_title = $value[1];
+	} else {
+		$maker_title = $value[1] . ": " . $value[4];
 	}
 
 ?>
@@ -112,14 +120,14 @@
 	
 <img src="<?php echo $value[7] ?>"  border="0" alt="" class="makerimg"/>
 
-<div class="title"><?php echo $value[1] ?>: <?php echo $value[4] ?></div>
+<div class="title"><?php echo $maker_title ?></div>
 <div class="description"><?php echo $value[5] ?></div> 
 <div class="url"><?php echo $value[8] ?></div>
 </div>
 
 <div class="footer-container">
 	<div class="row">
-		<div class="middle"><img class="heading-graphic" src="<?php echo "figs/QR$value[18].png" ?>"/></div>
+		<div class="middle"><img class="heading-graphic" src="<?php echo $qr_url ?>"/></div>
 		<div class="middle"><img class="heading-graphic" src="figs/RhodeIsland_MMF<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
 		<div class="right"><img class="heading-graphic" src="figs/WF Square wTEXT<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
 	</div>
