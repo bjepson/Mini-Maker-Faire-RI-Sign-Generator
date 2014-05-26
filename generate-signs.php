@@ -1,14 +1,38 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="css/Makers.css" type="text/css" />
+	<script>
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 39) {
+	projnum = location.href.match(/project=(\d*)/)[1];
+	next = parseInt(projnum) + 1;
+	window.location = location.href.replace(projnum, next);
+    }
+    if (evt.keyCode == 37) {
+	projnum = location.href.match(/project=(\d*)/)[1];
+	prev = parseInt(projnum) - 1;
+	window.location = location.href.replace(projnum, prev);
+    }
+};
+</script>
+
 	</head>
 <body>
 
 <?php
+#ini_set('display_errors', 1);
+
+  function get_bitly_short_url($url) {
+          $token = 'b6181508eac928fa86d9db23fb66f0da89dec8a4';
+	  $connectURL = 'https://api-ssl.bitly.com/v3/shorten?access_token='.$token.'&longUrl='.urlencode($url).'&format=txt';
+	  return file_get_contents($connectURL);
+  }
 
   include "key.php";
 
   `mkdir -p csvcache`;
+
 
   if (!$spreadsheet_key) {
 	fprintf(STDERR, "\$spreadsheet_key must be defined in key.php!\n");
@@ -97,7 +121,8 @@
 	$qr_url = "";
 	if ($value[18]) { // Got a maker #
 		$qr_url =
-			"http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=http%3A//makerfaireri.com/home/makers/%3Fproject%3D$value[18]";
+			#"http://chart.apis.google.com/chart?cht=qr&chs=220x220&chl=http%3A//makerfaireri.com/mini-maker-faire-ri-2012/2012-makers/%3Fproject%3D$value[18]";
+			"http://chart.apis.google.com/chart?cht=qr&chs=220x220&chl=" . urlencode($value[8]);
 	}
 	
 	$maker_title = "";
@@ -107,30 +132,44 @@
 		$maker_title = $value[1] . ": " . $value[4];
 	}
 
+	$desc = $value[5];
+	$desc1_style = "description";
+	$desc2 = "";
+
+        $desc = preg_replace('/• /', '<ul><li>', $desc, 1);
+        $desc = preg_replace('/• /', '<li>', $desc);
+	if (strlen($desc) < 220) {
+		$desc1_style = "description-padded";
+	}
+	if (strlen($desc) > 350) {
+		$array = explode('.',$desc);
+		$desc = array_shift($array) . ".";
+		$desc2 = join(".", $array);
+        }
+	$url = get_bitly_short_url($value[8]);
+
 ?>
 
 <div class="maker">
-	<div class="container">
-		<div class="row">
-			<div class="left"><img class="heading-graphic" src="figs/logo_complete.png"/></div>
-			<div class="right"><img class="heading-graphic" src="figs/maker.png"/></div>
-		</div>
-	</div>
+        <div class="flags">&nbsp;</div>
 	
-	
-<img src="<?php echo $value[7] ?>"  border="0" alt="" class="makerimg"/>
+<!-- <img src="<?php echo $value[7] ?>"  border="0" alt="" class="makerimg"/> -->
 
-<div class="title"><?php echo $maker_title ?></div>
-<div class="description"><?php echo $value[5] ?></div> 
-<div class="url"><?php echo $value[8] ?></div>
-</div>
+<div class="title"><?php echo $value[4] ?></div>
+<div class="<?php echo $desc1_style?>"><?php echo $desc ?></div> 
+<div class="description2"><?php echo $desc2 ?></div> 
+
 
 <div class="footer-container">
+	<div class="name"><?php echo $value[1] ?></div>
+	<div class="url"><a href="<?php echo $url ?>"><?php echo$url ?></a></div>
+        <div class="flags">&nbsp;</div>
 	<div class="row">
-		<div class="middle"><img class="heading-graphic" src="<?php echo $qr_url ?>"/></div>
-		<div class="middle"><img class="heading-graphic" src="figs/RhodeIsland_MMF<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
-		<div class="right"><img class="heading-graphic" src="figs/WF Square wTEXT<?php if ($compact) { echo "_sm"; } ?>.jpg"/></div>
+		<img class="footer-graphic" src="<?php echo $qr_url ?>"/>
+		<img class="footer-graphic" src="figs/RhodeIsland_MMF<?php if ($compact) { echo "_sm"; } ?>.png"/>
+		<!-- <div class="right"><img class="footer-graphic" src="figs/as220<?php if ($compact) { echo "_sm"; } ?>.png"/></div> -->
 	</div>
+</div>
 </div>
 
 <?php }

@@ -1,7 +1,5 @@
+
 .maker {
-	page-break-before: always;
-	height: 10in;
-	vertical-align: bottom;
 }
 
 .makerimg {
@@ -11,44 +9,104 @@
 }
 
 .container {
-	display: table;
-	padding-bottom:100px;
+        height:200px;
 }
 
 .row  {
-	display: table-row;
+	text-align: center;
 }
 
-.left,.right,.middle {
-	display: table-cell;
-	padding: 25px;
+.flags {
+    	background-image: url(../figs/MF_PennantFlags.png);
+    	background-position: center top;
+    	background-repeat: repeat-x, repeat;
+	height:3em;
 }
 
 .footer-container {
-	display: table;
+	width: 100%;
+	bottom: 0;
+	padding-bottom: 1em;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.heading-graphic {
-    height: 150px;
+.middle {
+	text-align: center;
+}
+
+
+.footer-graphic {
+    height: 125px;
 }
 
 
 .title {
     font-family: "BentonSans", Verdana, Arial, sans-serif;
-    font-size: 48pt;
+    font-size: 44pt;
+    text-transform:uppercase;
     font-weight: 600;
     color: #0094cd;
-    padding-top: 8pt;
+    padding-top: 6pt;
+    padding-bottom: 10pt;
+    text-align: center;
 }
 
+.description-padded {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    text-align: center;
+    font-size: 28pt;
+    font-weight: 400;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
 .description {
     font-family: "BentonSans", Verdana, Arial, sans-serif;
+    text-align: center;
+    font-size: 26pt;
+    font-weight: 400;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.description ul {
+    display: inline-block;
+    text-align: left;
+    margin-top: 4px;
+}
+
+.description ul li {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
     font-size: 18pt;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 4px;
+}
+.description2 {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    text-align: center;
+    font-size: 18pt;
+    margin-top: 8pt;
+    padding-left: 15%;
+    padding-right: 15%;
 }
 
 .url {
     font-family: "BentonSans", Verdana, Arial, sans-serif;
-    font-size: 18pt;
+    font-size: 24pt;
     color: #0094cd;
+    text-align: center;
+    padding-top: 4pt;
+    padding-bottom: 8pt;
+}
+.name {
+    font-family: "BentonSans", Verdana, Arial, sans-serif;
+    font-size: 24pt;
+    color: rgb(176,202,81);
+    text-align: center;
+    font-weight: 500;
     padding-top: 8pt;
+    padding-bottom: 4pt;
 }
